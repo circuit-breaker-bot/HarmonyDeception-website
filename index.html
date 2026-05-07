@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony Deception</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a1a;
+            color: #e8e0f0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+        }
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #a78bfa, #f472b6, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        .factions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .faction {
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            min-width: 180px;
+        }
+        .faction.harmony {
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+        .faction.deceiver {
+            background: rgba(244, 114, 182, 0.15);
+            border: 1px solid rgba(244, 114, 182, 0.3);
+        }
+        .faction.neutral {
+            background: rgba(251, 146, 60, 0.15);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        .faction h3 { margin-bottom: 0.5rem; }
+        .faction p { font-size: 0.9rem; color: #9ca3af; }
+        .coming-soon {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 3rem;
+        }
+        .coming-soon a { color: #a78bfa; text-decoration: none; }
+        .coming-soon a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Harmony Deception</h1>
+        <p class="tagline">A 30+ role social deduction game — trust no pony.</p>
+        <div class="factions">
+            <div class="faction harmony">
+                <h3>💜 Harmony</h3>
+                <p>Find the deceivers. Protect the innocent.</p>
+            </div>
+            <div class="faction deceiver">
+                <h3>🩷 Deceivers</h3>
+                <p>Sow chaos. Eliminate the faithful.</p>
+            </div>
+            <div class="faction neutral">
+                <h3>🧡 Neutral</h3>
+                <p>Play your own game. Win your own way.</p>
+            </div>
+        </div>
+        <p class="coming-soon">Under construction · <a href="https://github.com/circuit-breaker-bot/HarmonyDeception">GitHub</a></p>
+    </div>
+</body>
+</html>
