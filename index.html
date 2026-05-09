@@ -1,94 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harmony Deception</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0a1a;
-            color: #e8e0f0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 700px;
-        }
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #a78bfa, #f472b6, #fb923c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-        }
-        .tagline {
-            font-size: 1.2rem;
-            color: #9ca3af;
-            margin-bottom: 2rem;
-        }
-        .factions {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .faction {
-            padding: 1.5rem 2rem;
-            border-radius: 12px;
-            min-width: 180px;
-        }
-        .faction.harmony {
-            background: rgba(167, 139, 250, 0.15);
-            border: 1px solid rgba(167, 139, 250, 0.3);
-        }
-        .faction.deceiver {
-            background: rgba(244, 114, 182, 0.15);
-            border: 1px solid rgba(244, 114, 182, 0.3);
-        }
-        .faction.neutral {
-            background: rgba(251, 146, 60, 0.15);
-            border: 1px solid rgba(251, 146, 60, 0.3);
-        }
-        .faction h3 { margin-bottom: 0.5rem; }
-        .faction p { font-size: 0.9rem; color: #9ca3af; }
-        .coming-soon {
-            font-size: 0.85rem;
-            color: #6b7280;
-            margin-top: 3rem;
-        }
-        .coming-soon a { color: #a78bfa; text-decoration: none; }
-        .coming-soon a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harmony Deception — Trust No One</title>
+  <meta name="description" content="A 30+ role social deduction game set in a pony village where trust is the most dangerous thing you can give. Find the truth. Survive the night." />
+  <meta property="og:title" content="Harmony Deception" />
+  <meta property="og:description" content="30+ roles. Hidden traitors. A pony village on the edge. Can you find the Deceivers before they erase you?" />
+  <meta property="og:image" content="og-card.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Harmony Deception</h1>
-        <p class="tagline">A 30+ role social deduction game — trust no pony.</p>
-        <div class="factions">
-            <div class="faction harmony">
-                <h3>💜 Harmony</h3>
-                <p>Find the deceivers. Protect the innocent.</p>
-            </div>
-            <div class="faction deceiver">
-                <h3>🩷 Deceivers</h3>
-                <p>Sow chaos. Eliminate the faithful.</p>
-            </div>
-            <div class="faction neutral">
-                <h3>🧡 Neutral</h3>
-                <p>Play your own game. Win your own way.</p>
-            </div>
-        </div>
-        <p class="coming-soon">Under construction · <a href="https://github.com/circuit-breaker-bot/HarmonyDeception">GitHub</a></p>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="orbs" aria-hidden="true">
+        <span class="orb orb-gold"></span>
+        <span class="orb orb-lavender"></span>
+        <span class="orb orb-rose"></span>
+        <span class="orb orb-teal"></span>
+      </div>
     </div>
+
+    <nav class="nav">
+      <a class="nav-logo" href="#">HD</a>
+      <ul class="nav-links">
+        <li><a href="#factions">Factions</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#follow" class="nav-cta">Follow</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <div class="eyebrow">A Social Deduction Game</div>
+      <h1 class="hero-title">
+        <span class="title-harmony">Harmony</span>
+        <span class="title-separator">·</span>
+        <span class="title-deception">Deception</span>
+      </h1>
+      <p class="hero-tagline">Trust no one. Find the truth. Survive the night.</p>
+      <p class="hero-sub">A 30+ role pony social deduction game where hidden Changelings have infiltrated Veloria — and only the village can root them out.</p>
+      <div class="hero-actions">
+        <a href="#follow" class="btn btn-primary">Stay in the Loop</a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
+      </div>
+
+      <div class="hero-badges">
+        <span class="badge">🏡 30+ Unique Roles</span>
+        <span class="badge">🎭 3 Factions</span>
+        <span class="badge">🦄 MLP-Inspired World</span>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </header>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro" id="about">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h2>Veloria has a problem.</h2>
+          <p>The village of <strong>Veloria</strong> is small. Everyone knows every face. Which is exactly why the betrayal cuts so deep.</p>
+          <p>Changelings — shapeshifters who feed on trust and love — have embedded themselves in the village, wearing borrowed faces, living borrowed lives. Every night, they erase someone. Every day, the village scrambles to figure out who to blame.</p>
+          <p>The problem? They're <em>very good</em> at looking innocent.</p>
+        </div>
+        <div class="intro-quote">
+          <blockquote>
+            <p>"You thought you knew your neighbors. You thought this village was safe."</p>
+            <cite>— The Changeling Queen, probably</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FACTIONS ===== -->
+  <section class="factions" id="factions">
+    <div class="container">
+      <h2 class="section-title">Three Factions. One Village. No Mercy.</h2>
+      <p class="section-sub">Every game, every pony plays a different role. Every role has a different agenda.</p>
+
+      <div class="faction-grid">
+
+        <div class="faction-card faction-harmony">
+          <div class="faction-icon">🌸</div>
+          <h3>Harmony</h3>
+          <p class="faction-flavor">The ponies of Veloria just want to survive. Find the Deceivers before they're gone. Use every gift at your disposal — and hope your allies are who they say they are.</p>
+          <ul class="faction-roles">
+            <li>Honesty</li>
+            <li>Kindness</li>
+            <li>Loyalty</li>
+            <li>Laughter</li>
+            <li>Princess</li>
+            <li class="more">+ 7 more</li>
+          </ul>
+          <div class="faction-win">Win by eliminating all Deceivers</div>
+        </div>
+
+        <div class="faction-card faction-deceivers">
+          <div class="faction-icon">🌑</div>
+          <h3>Deceivers</h3>
+          <p class="faction-flavor">The Changeling Court doesn't want war. They want dominance — quiet, patient, invisible. Corrupt the information. Silence the witnesses. Let paranoia do the work.</p>
+          <ul class="faction-roles">
+            <li>Changeling Queen</li>
+            <li>Changeling Drone</li>
+            <li>Blightweaver</li>
+            <li>Fogsworn</li>
+            <li>Veilweaver</li>
+            <li class="more">+ 4 more</li>
+          </ul>
+          <div class="faction-win">Win by outnumbering or neutralizing Harmony</div>
+        </div>
+
+        <div class="faction-card faction-neutral">
+          <div class="faction-icon">🌙</div>
+          <h3>Neutrals</h3>
+          <p class="faction-flavor">Not everyone chose a side. Some are chasing their own goals. Some just want chaos. Some want to watch the world burn — or die trying. Their win conditions? Complicated.</p>
+          <ul class="faction-roles">
+            <li>Scapemare</li>
+            <li>RelicHunter</li>
+            <li>Courier</li>
+            <li>Wendigo</li>
+            <li>Hexblade</li>
+            <li class="more">+ 4 more</li>
+          </ul>
+          <div class="faction-win">Win on their own terms — if they survive long enough</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROLE SPOTLIGHT ===== -->
+  <section class="roles" id="roles">
+    <div class="container">
+      <h2 class="section-title">30+ Roles. Every Game, a Different Story.</h2>
+      <p class="section-sub">No two games play the same. Every role has a purpose — and a secret.</p>
+
+      <div class="roles-grid">
+
+        <div class="role-card role-harmony">
+          <div class="role-header">
+            <span class="role-faction-tag">Harmony</span>
+            <h4>Honesty</h4>
+          </div>
+          <p class="role-ability">Investigate a pony to learn if they walk in Harmony or shadow.</p>
+          <p class="role-flavor">"Truth isn't comfortable. But lies are worse."</p>
+        </div>
+
+        <div class="role-card role-harmony">
+          <div class="role-header">
+            <span class="role-faction-tag">Harmony</span>
+            <h4>Loyalty</h4>
+          </div>
+          <p class="role-ability">Guard a pony tonight. Block anyone who dares visit them.</p>
+          <p class="role-flavor">"You don't get to touch them. Not while I'm here."</p>
+        </div>
+
+        <div class="role-card role-harmony">
+          <div class="role-header">
+            <span class="role-faction-tag">Harmony</span>
+            <h4>Bellwether</h4>
+          </div>
+          <p class="role-ability">The most trusted voice in Veloria. Speak — and they'll listen. Or they'll vote wrong.</p>
+          <p class="role-flavor">"Whoever controls the narrative controls the verdict."</p>
+        </div>
+
+        <div class="role-card role-deceiver">
+          <div class="role-header">
+            <span class="role-faction-tag deceiver-tag">Deceiver</span>
+            <h4>Fogsworn</h4>
+          </div>
+          <p class="role-ability">Warp investigation results. Investigators find only confusion where you've been.</p>
+          <p class="role-flavor">"What they see isn't what is. That's the whole point."</p>
+        </div>
+
+        <div class="role-card role-deceiver">
+          <div class="role-header">
+            <span class="role-faction-tag deceiver-tag">Deceiver</span>
+            <h4>Veilweaver</h4>
+          </div>
+          <p class="role-ability">Disguise any Deceiver to look like a Harmony role under investigation.</p>
+          <p class="role-flavor">"Innocent? Darling, I'm whatever you need me to be."</p>
+        </div>
+
+        <div class="role-card role-neutral">
+          <div class="role-header">
+            <span class="role-faction-tag neutral-tag">Neutral</span>
+            <h4>Scapemare</h4>
+          </div>
+          <p class="role-ability">Win by getting voted out at trial. The town already suspects you — make it count.</p>
+          <p class="role-flavor">"You were going to blame me anyway. Might as well make it spectacular."</p>
+        </div>
+
+        <div class="role-card role-neutral">
+          <div class="role-header">
+            <span class="role-faction-tag neutral-tag">Neutral</span>
+            <h4>Wendigo</h4>
+          </div>
+          <p class="role-ability">Feed on conflict. The more distrust, the stronger you grow.</p>
+          <p class="role-flavor">"Don't stop the arguments on my account. I'm thriving."</p>
+        </div>
+
+        <div class="role-card role-harmony">
+          <div class="role-header">
+            <span class="role-faction-tag">Harmony</span>
+            <h4>Lanternbearer</h4>
+          </div>
+          <p class="role-ability">Keep watch in the dark so others can sleep. You see what moves in the night.</p>
+          <p class="role-flavor">"Light doesn't care who it reveals."</p>
+        </div>
+
+        <div class="role-card role-deceiver">
+          <div class="role-header">
+            <span class="role-faction-tag deceiver-tag">Deceiver</span>
+            <h4>Dreamspinner</h4>
+          </div>
+          <p class="role-ability">Redirect night actions — what one pony intends, another receives.</p>
+          <p class="role-flavor">"You thought you were visiting her. Funny — she thought the same thing."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="howto">
+    <div class="container">
+      <h2 class="section-title">Day. Night. Repeat.</h2>
+      <div class="howto-grid">
+        <div class="howto-step">
+          <div class="step-num">01</div>
+          <h3>Night Phase</h3>
+          <p>Deceivers scheme. Harmony investigates. Neutrals pursue their own agendas. Everyone makes their move — in the dark, in secret.</p>
+        </div>
+        <div class="howto-step">
+          <div class="step-num">02</div>
+          <h3>Day Phase</h3>
+          <p>Someone is dead. Accusations fly. Alliances form and break. You have to convince the village — or deflect suspicion — before the vote.</p>
+        </div>
+        <div class="howto-step">
+          <div class="step-num">03</div>
+          <h3>The Trial</h3>
+          <p>The village picks a suspect. They defend themselves. Everyone votes. Someone gets exiled — and Veloria hopes they got the right one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOLLOW ===== -->
+  <section class="follow" id="follow">
+    <div class="container">
+      <div class="follow-inner">
+        <h2>Be There When Veloria Opens Its Gates</h2>
+        <p>Harmony Deception is currently in development. Follow along for dev updates, lore drops, and early access announcements.</p>
+        <div class="follow-links">
+          <a href="https://discord.gg/clawd" class="btn btn-primary" target="_blank" rel="noopener">Join the Discord</a>
+        </div>
+        <p class="follow-note">Built with love (and paranoia) by the Harmony Deception team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">Harmony Deception</span>
+          <p>A social deduction game about trust, betrayal, and the ponies caught between them.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#factions">Factions</a>
+          <a href="#roles">Roles</a>
+          <a href="#about">About</a>
+          <a href="https://discord.gg/clawd" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 Harmony Deception. All rights reserved. All characters are ponies. No humans were harmed.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
