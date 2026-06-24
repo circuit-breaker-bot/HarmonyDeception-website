@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harmony Deception — How It Works</title>
+  <meta name="description" content="Learn how Harmony Deception plays: phases, matchmaking, spectating, and everything you need to survive Veloria." />
+  <meta property="og:title" content="Harmony Deception — How It Works" />
+  <meta property="og:description" content="Night phases, day debates, trials, matchmaking, and spectating — everything you need to know to survive Veloria." />
+  <meta property="og:image" content="og-card.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <a class="nav-logo" href="index.html#top">HD</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#gameplay">Gameplay</a></li>
+      <li><a href="#matchmaking">Matchmaking</a></li>
+      <li><a href="#spectating">Spectating</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="index.html#follow" class="nav-cta">Join the Village</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="top" style="min-height: 60vh; padding: 160px 24px 100px;">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="orbs" aria-hidden="true">
+        <span class="orb orb-gold"></span>
+        <span class="orb orb-lavender"></span>
+        <span class="orb orb-rose"></span>
+        <span class="orb orb-teal"></span>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="eyebrow" data-fade>Understand the Game</div>
+      <h1 class="hero-title" data-fade>
+        <span class="title-harmony">How</span>
+        <span class="title-separator">·</span>
+        <span class="title-deception">It Works</span>
+      </h1>
+      <p class="hero-tagline" data-fade>Know the rules. Read the room. Survive the night.</p>
+      <p class="hero-sub" data-fade>Everything you need to understand Harmony Deception's phases, matchmaking, and spectator systems — from your first lobby to your hundredth trial.</p>
+      <div class="hero-actions" data-fade>
+        <a href="#gameplay" class="btn btn-primary btn-glow">Learn the Phases</a>
+        <a href="#matchmaking" class="btn btn-ghost">Find a Match</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== GAMEPLAY OVERVIEW ===== -->
+  <section class="howto" id="gameplay" style="padding-top: 140px;">
+    <div class="container">
+      <div class="section-header" data-fade>
+        <div class="section-label">Gameplay</div>
+        <h2 class="section-title">Day. Night. Repeat.</h2>
+        <p class="section-sub">One full cycle is all it takes for everything to change. Here's what actually happens.</p>
+      </div>
+
+      <div class="howto-grid">
+        <div class="howto-step" data-fade>
+          <div class="step-num">01</div>
+          <div class="step-icon">🌙</div>
+          <h3>Night Phase</h3>
+          <p>Deceivers scheme. Harmony investigates. Neutrals pursue their own agendas. Everyone makes their move — in the dark, in secret, in silence. All actions resolve simultaneously, so what you do and who you target matters before you know what others chose.</p>
+          <div class="step-detail">
+            <span>Investigate</span>
+            <span>Protect</span>
+            <span>Kill</span>
+            <span>Deceive</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">02</div>
+          <div class="step-icon">☀️</div>
+          <h3>Day Phase</h3>
+          <p>Someone is dead. Accusations fly. Alliances form and break in real time. You have to convince the village — or deflect suspicion — before the vote. Information is muddled, not clear. Trust is earned, not given. The debate is where games are won or lost.</p>
+          <div class="step-detail">
+            <span>Debate</span>
+            <span>Accuse</span>
+            <span>Defend</span>
+            <span>Scheme</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">03</div>
+          <div class="step-icon">⚖️</div>
+          <h3>The Trial</h3>
+          <p>The village picks a suspect. They defend themselves. Everyone votes. Someone gets exiled — and Veloria hopes they got the right one. A tie means no exile. An innocent exile is a win for the Deceivers. Every vote is a gamble with lives on the line.</p>
+          <div class="step-detail">
+            <span>Nominate</span>
+            <span>Defend</span>
+            <span>Vote</span>
+            <span>Execute</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role Categories -->
+      <div style="margin-top: 80px;">
+        <div class="section-header" data-fade>
+          <div class="section-label">Role Categories</div>
+          <h2 class="section-title">Every Role Has a Purpose</h2>
+          <p class="section-sub">34 roles across 9 categories. No duplicates that matter.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🔍</div>
+            <h4>Investigative</h4>
+            <p>Gather intel — but information is muddled. Honesty sees factions, not exact roles. Stareholder sees visitors, not abilities. Princess gives categories, not names.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🛡️</div>
+            <h4>Protective</h4>
+            <p>Block attacks, heal wounds, cure infection. Loyalty guards. Kindness heals. Shieldbearer redirects. Warden trades death for death.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">⚔️</div>
+            <h4>Killing</h4>
+            <p>Eliminate threats — or be one. Royal Guard and Lawhoof serve Harmony justice. Duelist and the NKs kill for their own reasons.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🤝</div>
+            <h4>Support</h4>
+            <p>Empower allies, redirect enemies, control information flow. Laughter buffs. Muddler redirects. Slipstream silences. Sparkguard empowers.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🎭</div>
+            <h4>Deception</h4>
+            <p>Fake identities, frame innocents, hide in plain sight. Veilweaver disguises. Hexbrand brands. Dreamspinner redirects. Mistspeaker impersonates.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">💥</div>
+            <h4>Disruption</h4>
+            <p>Break the flow. Block abilities. Silence witnesses. Nightcaller disrupts night actions. Sigilbane breaks links.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🌀</div>
+            <h4>Chaos</h4>
+            <p>Unpredictable by design. Scapemare wins by getting voted out. The more chaos, the better their odds.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">🎯</div>
+            <h4>Objective</h4>
+            <p>Win by completing a specific task. Gambler bets on outcomes. Shardseeker collects relics. Bountymare hunts targets.</p>
+          </div>
+          <div class="feature-card" data-fade>
+            <div class="feature-icon">💰</div>
+            <h4>Commerce</h4>
+            <p>Trade information and favors. Dealer brokers deals, sells secrets, and profits from the paranoia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faction Win Conditions -->
+      <div style="margin-top: 80px;">
+        <div class="section-header" data-fade>
+          <div class="section-label">Win Conditions</div>
+          <h2 class="section-title">How Each Faction Wins</h2>
+          <p class="section-sub">Three factions. Three paths to victory. Only one can succeed.</p>
+        </div>
+        <div class="faction-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="faction-card faction-harmony" data-fade>
+            <div class="faction-glow" aria-hidden="true"></div>
+            <div class="faction-icon">🌸</div>
+            <h3>Harmony</h3>
+            <p class="faction-flavor">The village must eliminate every Deceiver and every Neutral Killer. Protect the innocent. Find the traitors. Survive until dawn.</p>
+            <div class="faction-win">Eliminate all Deceivers + NKs</div>
+          </div>
+          <div class="faction-card faction-deceivers" data-fade>
+            <div class="faction-glow" aria-hidden="true"></div>
+            <div class="faction-icon">🌑</div>
+            <h3>Deceivers</h3>
+            <p class="faction-flavor">Outnumber or neutralize all Harmony ponies. You don't need to kill them all — you just need them to stop mattering. Patience and paranoia are your weapons.</p>
+            <div class="faction-win">Outnumber or neutralize Harmony</div>
+          </div>
+          <div class="faction-card faction-neutral" data-fade>
+            <div class="faction-glow" aria-hidden="true"></div>
+            <div class="faction-icon">🌙</div>
+            <h3>Neutrals</h3>
+            <p class="faction-flavor">Every Neutral has their own win condition. Some want to survive. Some want to collect. Some want to watch the world burn. Check your role card carefully.</p>
+            <div class="faction-win">Win on their own terms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MATCHMAKING ===== -->
+  <section class="features" id="matchmaking" style="padding-top: 140px;">
+    <div class="container">
+      <div class="section-header" data-fade>
+        <div class="section-label">Matchmaking</div>
+        <h2 class="section-title">Find Your Game</h2>
+        <p class="section-sub">Get into a match quickly. Play with friends. Fill with bots. Here's how it works.</p>
+      </div>
+
+      <div class="howto-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 60px;">
+        <div class="howto-step" data-fade>
+          <div class="step-num">01</div>
+          <div class="step-icon">🔑</div>
+          <h3>Room Codes</h3>
+          <p>Host a game and get a 6-character room code. Share it with friends on Discord, text, or voice. They enter the code and join instantly. No account needed to play.</p>
+          <div class="step-detail">
+            <span>6 Characters</span>
+            <span>Share Anywhere</span>
+            <span>Instant Join</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">02</div>
+          <div class="step-icon">🏠</div>
+          <h3>Lobby System</h3>
+          <p>The host creates a room. Players join via code. The host sees who's in and starts when ready. Simple, fast, and designed for groups that already know each other.</p>
+          <div class="step-detail">
+            <span>Create Room</span>
+            <span>Players Join</span>
+            <span>Host Starts</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">03</div>
+          <div class="step-icon">🤖</div>
+          <h3>Bot Fill</h3>
+          <p>Not enough humans? Bots fill the remaining slots automatically. They play intelligently — investigating, accusing, voting — so every game feels full even with a small group.</p>
+          <div class="step-detail">
+            <span>Auto-Fill</span>
+            <span>Smart AI</span>
+            <span>6–16 Players</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">👥</div>
+          <h4>Player Count: 6–16</h4>
+          <p>Games scale from intimate 6-player mysteries to chaotic 16-player villages. Smaller games mean every voice matters. Larger games mean more layers of deception.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">🎲</div>
+          <h4>Role Assignment</h4>
+          <p>Server-authoritative random distribution. No duplicates of key roles. Faction ratios balance automatically based on player count. You never know what you'll get.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">🔒</div>
+          <h4>Fair & Random</h4>
+          <p>The server handles all role draws. No client-side randomness means no cheating, no seed manipulation, no unfair advantages. Everyone rolls the same dice.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">⏳</div>
+          <h4>Coming in Phase 14: Auto-Matchmaking</h4>
+          <p>Queue up solo or with a party and get matched into a full lobby automatically. Ranked and unranked queues. Elo-based matchmaking. Coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPECTATING ===== -->
+  <section class="howto" id="spectating" style="padding-top: 140px;">
+    <div class="container">
+      <div class="section-header" data-fade>
+        <div class="section-label">Spectating</div>
+        <h2 class="section-title">Watch the Deception Unfold</h2>
+        <p class="section-sub">Not playing? No problem. Watch live matches as a silent observer.</p>
+      </div>
+
+      <div class="howto-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 60px;">
+        <div class="howto-step" data-fade>
+          <div class="step-num">01</div>
+          <div class="step-icon">👁️</div>
+          <h3>Spectator Mode</h3>
+          <p>Join any in-progress match as a read-only observer. See the public state: player list, current phase, vote results, eliminations. You know what the village knows.</p>
+          <div class="step-detail">
+            <span>Read-Only</span>
+            <span>Live State</span>
+            <span>Any Match</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">02</div>
+          <div class="step-icon">🎚️</div>
+          <h3>Faction-Filtered View</h3>
+          <p>Optionally filter what you see by faction. Want to watch from Harmony's perspective? Or see the Deceiver side? Toggle filters to focus your observation.</p>
+          <div class="step-detail">
+            <span>Harmony View</span>
+            <span>Deceiver View</span>
+            <span>Neutral View</span>
+          </div>
+        </div>
+        <div class="howto-step" data-fade>
+          <div class="step-num">03</div>
+          <div class="step-icon">🎁</div>
+          <h3>Role Reveal at End</h3>
+          <p>When the game ends, all roles are revealed. See who was lying, who was telling the truth, and how the Deceivers (or Harmony) pulled it off. The best way to learn.</p>
+          <div class="step-detail">
+            <span>Full Reveal</span>
+            <span>Learn Strategies</span>
+            <span>Post-Game Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: 1fr;">
+        <div class="feature-card" data-fade style="text-align: center; max-width: 720px; margin: 0 auto;">
+          <div class="feature-icon">⏪</div>
+          <h4>Coming Soon: Replay Player</h4>
+          <p>Watch past games with full playback controls: play, pause, scrub, rewind. Study your own games or watch top players. Analyze every night phase, every accusation, every vote. The best way to improve is to see it again — this time, with all the cards on the table.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="features" id="faq" style="padding-top: 140px; padding-bottom: 140px;">
+    <div class="container">
+      <div class="section-header" data-fade>
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+        <p class="section-sub">Quick answers to the things every new player asks.</p>
+      </div>
+
+      <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>How long does a game last?</h4>
+          <p>Most games take 15–30 minutes depending on player count and how fast votes resolve. Smaller games tend to be quicker. Larger games have more debate and take longer.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>Can I play solo?</h4>
+          <p>Yes! Create a room and fill the remaining slots with bots. It's a great way to learn roles and practice strategies without the pressure of human opponents.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>What if I get a role I don't know?</h4>
+          <p>Every role card includes a clear ability description and win condition. Plus, you can spectate games to see how roles play out in practice before jumping in yourself.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>Is there voice chat?</h4>
+          <p>Not built-in — we recommend using Discord for voice while playing. The in-game chat supports text-based discussion during day phases and whispers between players.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>Can I play on mobile?</h4>
+          <p>The current build is desktop-focused. Mobile support is planned for a future phase. For now, grab your keyboard and settle in for some pony paranoia.</p>
+        </div>
+        <div class="feature-card" data-fade>
+          <div class="feature-icon">❓</div>
+          <h4>What happens if someone disconnects?</h4>
+          <p>A disconnected player is replaced by a bot that takes over their role and continues playing. The game doesn't stop. Reconnection is supported if they return quickly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="follow">
+    <div class="container">
+      <div class="cta-inner" data-fade>
+        <div class="cta-glow" aria-hidden="true"></div>
+        <h2>Ready to Enter Veloria?</h2>
+        <p class="cta-lead">Join our community for dev updates, exclusive lore, playtest access, and the chance to shape Harmony Deception before it launches.</p>
+        <div class="cta-actions">
+          <a href="https://discord.gg/TJDz8Hm9" class="btn btn-primary btn-large btn-glow" target="_blank" rel="noopener">Join the Discord</a>
+          <a href="index.html" class="btn btn-ghost btn-large">Back to Home</a>
+        </div>
+        <div class="cta-social">
+          <a href="https://discord.gg/TJDz8Hm9" class="social-link" target="_blank" rel="noopener" aria-label="Discord">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter / X (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube (coming soon)">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <p class="cta-note">Built with love (and paranoia) by the Harmony Deception team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">Harmony Deception</span>
+          <p>A social deduction game about trust, betrayal, and the ponies caught between them.</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#factions">Factions</a>
+          <a href="index.html#roles">Roles</a>
+          <a href="index.html#about">World</a>
+          <a href="index.html#howto">How to Play</a>
+          <a href="https://discord.gg/TJDz8Hm9" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 Harmony Deception. All rights reserved. All characters are ponies. No humans were harmed.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
