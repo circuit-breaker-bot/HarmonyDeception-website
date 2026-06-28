@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Replay Player — Harmony Deception</title>
+  <meta name="description" content="Watch past Harmony Deception games replay in your browser. Load a replay file and scrub through the game timeline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="replay-player.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="replay-nav">
+    <div class="replay-nav-logo">
+      HD <span>Replay Player</span>
+    </div>
+    <a href="index.html" class="replay-nav-link">← Back to Home</a>
+  </nav>
+
+  <!-- ===== FILE LOADER ===== -->
+  <div class="loader-overlay" id="loaderOverlay">
+    <div class="loader-content">
+      <h1 class="loader-title">Replay Player</h1>
+      <p class="loader-sub">Load a Harmony Deception replay file to watch the game unfold.</p>
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone-icon">📂</div>
+        <div class="dropzone-text">Drop a replay .json file here</div>
+        <div class="dropzone-sub">or click to browse</div>
+        <input type="file" id="fileInput" accept=".json,application/json" style="display:none;" />
+      </div>
+      <button class="loader-sample-btn" id="loadSampleBtn">
+        ▶ Load Sample Replay
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== REPLAY APP ===== -->
+  <div class="replay-app" id="replayApp">
+
+    <!-- Match Header -->
+    <div class="match-header">
+      <div class="match-info">
+        <h1 id="matchTitle">Match</h1>
+        <div class="match-meta" id="matchMeta">
+          <!-- populated by JS -->
+        </div>
+      </div>
+      <button class="match-load-btn" id="loadAnotherBtn">Load Another File</button>
+    </div>
+
+    <!-- Spectator Banner -->
+    <div class="spectator-banner">
+      <span class="spectator-banner-icon">👁</span>
+      <span>Spectator mode — showing public events only. Roles hidden until game over.</span>
+    </div>
+
+    <!-- Game State Panel -->
+    <div class="state-panel" id="statePanel">
+      <div class="state-item">
+        <div class="state-item-label">Day</div>
+        <div class="state-item-value" id="stateDay">—</div>
+      </div>
+      <div class="state-item">
+        <div class="state-item-label">Phase</div>
+        <div class="state-item-value" id="statePhase">—</div>
+      </div>
+      <div class="state-item">
+        <div class="state-item-label">Alive</div>
+        <div class="state-item-value harmony" id="stateAlive">—</div>
+      </div>
+      <div class="state-item">
+        <div class="state-item-label">Dead</div>
+        <div class="state-item-value deceiver" id="stateDead">—</div>
+      </div>
+      <div class="state-item">
+        <div class="state-item-label">Timer</div>
+        <div class="state-item-value" id="stateTimer">—</div>
+      </div>
+      <div class="state-item">
+        <div class="state-item-label">Event</div>
+        <div class="state-item-value" id="stateEventCount">0 / 0</div>
+      </div>
+    </div>
+
+    <!-- Player Grid: Timeline + Player List -->
+    <div class="player-grid">
+      <div class="timeline-panel">
+        <div class="timeline-phase-display">
+          <div class="phase-indicator">
+            <span class="phase-icon" id="phaseIcon">☀️</span>
+            <div>
+              <div class="phase-label" id="phaseLabel">Day 1</div>
+              <div class="phase-day" id="phaseSubLabel">Discussion</div>
+            </div>
+          </div>
+          <div class="timer-display" id="timerDisplay">—</div>
+        </div>
+
+        <!-- Phase markers above timeline -->
+        <div class="phase-markers" id="phaseMarkers"></div>
+
+        <!-- Timeline scrubber -->
+        <div class="timeline-scrubber">
+          <div class="scrubber-track" id="scrubberTrack">
+            <div class="scrubber-fill" id="scrubberFill"></div>
+            <div class="scrubber-thumb" id="scrubberThumb"></div>
+          </div>
+        </div>
+
+        <!-- Death markers below timeline -->
+        <div class="death-markers" id="deathMarkers"></div>
+
+        <!-- Playback controls -->
+        <div class="controls">
+          <button class="ctrl-btn ctrl-btn-icon" id="btnPrev" title="Previous event">⏮</button>
+          <button class="ctrl-btn ctrl-btn-play" id="btnPlay" title="Play/Pause">▶</button>
+          <button class="ctrl-btn ctrl-btn-icon" id="btnNext" title="Next event">⏭</button>
+          <div class="speed-selector" id="speedSelector">
+            <button class="speed-btn active" data-speed="1">1x</button>
+            <button class="speed-btn" data-speed="2">2x</button>
+            <button class="speed-btn" data-speed="4">4x</button>
+          </div>
+          <div class="time-display">
+            <strong id="currentTime">0:00</strong> / <span id="totalTime">0:00</span>
+          </div>
+        </div>
+
+        <!-- Phase jump buttons -->
+        <div class="phase-jumps" id="phaseJumps">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <!-- Player List -->
+      <div class="player-list-panel">
+        <h3>Players</h3>
+        <ul class="player-list" id="playerList">
+          <!-- populated by JS -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Event Log -->
+    <div class="event-log-panel">
+      <div class="event-log-header">
+        <h3>Event Log</h3>
+        <div class="event-filters" id="eventFilters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="chat">Chat</button>
+          <button class="filter-btn" data-filter="vote">Votes</button>
+          <button class="filter-btn" data-filter="death">Deaths</button>
+          <button class="filter-btn" data-filter="phase">Phases</button>
+          <button class="filter-btn" data-filter="system">System</button>
+        </div>
+      </div>
+      <div class="event-log" id="eventLog">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <script src="replay-player.js"></script>
+</body>
+</html>

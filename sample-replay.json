@@ -1,0 +1,326 @@
+{
+  "version": "1.0",
+  "matchId": "match-sample-001",
+  "startedAt": "2026-06-27T18:00:00Z",
+  "endedAt": "2026-06-27T18:35:00Z",
+  "gameVersion": "1.4.2",
+  "minPlayers": 5,
+  "maxPlayers": 16,
+  "winner": "Harmony",
+  "winCondition": "Harmony majority reached (all Deceivers eliminated)",
+  "totalDays": 4,
+  "compression": "none",
+  "bodyChecksum": "sha256:sample-placeholder-checksum",
+  "players": [
+    { "playerIndex": 0, "displayName": "Moonbeam", "faction": "Harmony", "roleName": "Honesty", "wasAlive": true, "diedAt": null, "deathReason": null, "diedByPlayerIndex": null },
+    { "playerIndex": 1, "displayName": "Silverstream", "faction": "Harmony", "roleName": "Kindness", "wasAlive": false, "diedAt": 3, "deathReason": "night_kill", "diedByPlayerIndex": 5 },
+    { "playerIndex": 2, "displayName": "Skystar", "faction": "Deceiver", "roleName": "ChangelingDrone", "wasAlive": false, "diedAt": 6, "deathReason": "execution", "diedByPlayerIndex": null },
+    { "playerIndex": 3, "displayName": "Smolder", "faction": "Neutral", "roleName": "Gambler", "wasAlive": true, "diedAt": null, "deathReason": null, "diedByPlayerIndex": null },
+    { "playerIndex": 4, "displayName": "Ocellus", "faction": "Harmony", "roleName": "Loyalty", "wasAlive": true, "diedAt": null, "deathReason": null, "diedByPlayerIndex": null },
+    { "playerIndex": 5, "displayName": "Gallus", "faction": "Deceiver", "roleName": "ChangelingQueen", "wasAlive": false, "diedAt": 8, "deathReason": "execution", "diedByPlayerIndex": null },
+    { "playerIndex": 6, "displayName": "Nightlight", "faction": "Harmony", "roleName": "Warden", "wasAlive": false, "diedAt": 5, "deathReason": "night_kill", "diedByPlayerIndex": 5 },
+    { "playerIndex": 7, "displayName": "Sunburst", "faction": "Neutral", "roleName": "Advocate", "wasAlive": true, "diedAt": null, "deathReason": null, "diedByPlayerIndex": null }
+  ],
+  "phases": [
+    { "phaseIndex": 0, "phaseType": "Day", "dayNumber": 1, "phaseStartedAt": "2026-06-27T18:00:00Z", "phaseEndedAt": "2026-06-27T18:02:00Z", "durationSeconds": 120, "wasSkipped": false, "eventCount": 12 },
+    { "phaseIndex": 1, "phaseType": "NightAction", "dayNumber": 1, "phaseStartedAt": "2026-06-27T18:02:00Z", "phaseEndedAt": "2026-06-27T18:04:30Z", "durationSeconds": 150, "wasSkipped": false, "eventCount": 10 },
+    { "phaseIndex": 2, "phaseType": "NightResolution", "dayNumber": 1, "phaseStartedAt": "2026-06-27T18:04:30Z", "phaseEndedAt": "2026-06-27T18:05:00Z", "durationSeconds": 30, "wasSkipped": false, "eventCount": 3 },
+    { "phaseIndex": 3, "phaseType": "Day", "dayNumber": 2, "phaseStartedAt": "2026-06-27T18:05:00Z", "phaseEndedAt": "2026-06-27T18:09:00Z", "durationSeconds": 240, "wasSkipped": false, "eventCount": 18 },
+    { "phaseIndex": 4, "phaseType": "Voting", "dayNumber": 2, "phaseStartedAt": "2026-06-27T18:09:00Z", "phaseEndedAt": "2026-06-27T18:11:00Z", "durationSeconds": 120, "wasSkipped": false, "eventCount": 8 },
+    { "phaseIndex": 5, "phaseType": "NightAction", "dayNumber": 2, "phaseStartedAt": "2026-06-27T18:11:00Z", "phaseEndedAt": "2026-06-27T18:13:30Z", "durationSeconds": 150, "wasSkipped": false, "eventCount": 8 },
+    { "phaseIndex": 6, "phaseType": "NightResolution", "dayNumber": 2, "phaseStartedAt": "2026-06-27T18:13:30Z", "phaseEndedAt": "2026-06-27T18:14:00Z", "durationSeconds": 30, "wasSkipped": false, "eventCount": 3 },
+    { "phaseIndex": 7, "phaseType": "Day", "dayNumber": 3, "phaseStartedAt": "2026-06-27T18:14:00Z", "phaseEndedAt": "2026-06-27T18:18:00Z", "durationSeconds": 240, "wasSkipped": false, "eventCount": 16 },
+    { "phaseIndex": 8, "phaseType": "Voting", "dayNumber": 3, "phaseStartedAt": "2026-06-27T18:18:00Z", "phaseEndedAt": "2026-06-27T18:20:00Z", "durationSeconds": 120, "wasSkipped": false, "eventCount": 9 },
+    { "phaseIndex": 9, "phaseType": "NightAction", "dayNumber": 3, "phaseStartedAt": "2026-06-27T18:20:00Z", "phaseEndedAt": "2026-06-27T18:22:00Z", "durationSeconds": 120, "wasSkipped": false, "eventCount": 5 },
+    { "phaseIndex": 10, "phaseType": "NightResolution", "dayNumber": 3, "phaseStartedAt": "2026-06-27T18:22:00Z", "phaseEndedAt": "2026-06-27T18:22:30Z", "durationSeconds": 30, "wasSkipped": false, "eventCount": 2 },
+    { "phaseIndex": 11, "phaseType": "Day", "dayNumber": 4, "phaseStartedAt": "2026-06-27T18:22:30Z", "phaseEndedAt": "2026-06-27T18:26:00Z", "durationSeconds": 210, "wasSkipped": false, "eventCount": 10 },
+    { "phaseIndex": 12, "phaseType": "NightAction", "dayNumber": 4, "phaseStartedAt": "2026-06-27T18:26:00Z", "phaseEndedAt": "2026-06-27T18:28:00Z", "durationSeconds": 120, "wasSkipped": false, "eventCount": 4 },
+    { "phaseIndex": 13, "phaseType": "NightResolution", "dayNumber": 4, "phaseStartedAt": "2026-06-27T18:28:00Z", "phaseEndedAt": "2026-06-27T18:28:30Z", "durationSeconds": 30, "wasSkipped": false, "eventCount": 2 },
+    { "phaseIndex": 14, "phaseType": "Day", "dayNumber": 5, "phaseStartedAt": "2026-06-27T18:28:30Z", "phaseEndedAt": "2026-06-27T18:35:00Z", "durationSeconds": 390, "wasSkipped": false, "eventCount": 5 }
+  ],
+  "events": [
+    { "eventId": 1, "phaseIndex": 0, "timestampMs": 0, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "day_number": 1, "timer_seconds": 120 }, "visibility": "public" },
+    { "eventId": 2, "phaseIndex": 0, "timestampMs": 500, "kind": "player_joined", "actorIndex": 0, "targetIndex": null, "data": { "display_name": "Moonbeam" }, "visibility": "public" },
+    { "eventId": 3, "phaseIndex": 0, "timestampMs": 600, "kind": "player_joined", "actorIndex": 1, "targetIndex": null, "data": { "display_name": "Silverstream" }, "visibility": "public" },
+    { "eventId": 4, "phaseIndex": 0, "timestampMs": 700, "kind": "player_joined", "actorIndex": 2, "targetIndex": null, "data": { "display_name": "Skystar" }, "visibility": "public" },
+    { "eventId": 5, "phaseIndex": 0, "timestampMs": 800, "kind": "player_joined", "actorIndex": 3, "targetIndex": null, "data": { "display_name": "Smolder" }, "visibility": "public" },
+    { "eventId": 6, "phaseIndex": 0, "timestampMs": 900, "kind": "player_joined", "actorIndex": 4, "targetIndex": null, "data": { "display_name": "Ocellus" }, "visibility": "public" },
+    { "eventId": 7, "phaseIndex": 0, "timestampMs": 1000, "kind": "player_joined", "actorIndex": 5, "targetIndex": null, "data": { "display_name": "Gallus" }, "visibility": "public" },
+    { "eventId": 8, "phaseIndex": 0, "timestampMs": 1100, "kind": "player_joined", "actorIndex": 6, "targetIndex": null, "data": { "display_name": "Nightlight" }, "visibility": "public" },
+    { "eventId": 9, "phaseIndex": 0, "timestampMs": 1200, "kind": "player_joined", "actorIndex": 7, "targetIndex": null, "data": { "display_name": "Sunburst" }, "visibility": "public" },
+    { "eventId": 10, "phaseIndex": 0, "timestampMs": 2000, "kind": "role_assigned", "actorIndex": null, "targetIndex": 0, "data": { "role_name": "Honesty", "faction": "Harmony" }, "visibility": "private" },
+    { "eventId": 11, "phaseIndex": 0, "timestampMs": 3000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Good luck everypony! Let's find those Changelings!", "channel": "public" }, "visibility": "public" },
+    { "eventId": 12, "phaseIndex": 0, "timestampMs": 5000, "kind": "chat_message", "actorIndex": 2, "targetIndex": null, "data": { "text": "Yeah, let's work together. I'm definitely Harmony.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 13, "phaseIndex": 0, "timestampMs": 8000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "We should be careful about accusations on Day 1. Too early to tell.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 14, "phaseIndex": 0, "timestampMs": 15000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "Agreed. Let's see what tonight brings.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 15, "phaseIndex": 0, "timestampMs": 120000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 16, "phaseIndex": 1, "timestampMs": 120500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "day_number": 1, "timer_seconds": 90 }, "visibility": "public" },
+    { "eventId": 17, "phaseIndex": 1, "timestampMs": 122000, "kind": "night_action_submitted", "actorIndex": 0, "targetIndex": 2, "data": { "ability_name": "Investigate Allegiance", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 18, "phaseIndex": 1, "timestampMs": 124000, "kind": "night_action_submitted", "actorIndex": 5, "targetIndex": 1, "data": { "ability_name": "Assassinate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 19, "phaseIndex": 1, "timestampMs": 125000, "kind": "night_action_submitted", "actorIndex": 4, "targetIndex": 0, "data": { "ability_name": "Guard", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 20, "phaseIndex": 1, "timestampMs": 126000, "kind": "night_action_submitted", "actorIndex": 1, "targetIndex": 6, "data": { "ability_name": "Heal", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 21, "phaseIndex": 1, "timestampMs": 127000, "kind": "night_action_submitted", "actorIndex": 6, "targetIndex": 4, "data": { "ability_name": "Mark Ward", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 22, "phaseIndex": 1, "timestampMs": 128000, "kind": "night_action_submitted", "actorIndex": 2, "targetIndex": 6, "data": { "ability_name": "Assassinate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 23, "phaseIndex": 1, "timestampMs": 130000, "kind": "night_action_submitted", "actorIndex": 3, "targetIndex": 5, "data": { "ability_name": "Gamble", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 24, "phaseIndex": 1, "timestampMs": 132000, "kind": "night_action_submitted", "actorIndex": 7, "targetIndex": 3, "data": { "ability_name": "Advocate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 25, "phaseIndex": 1, "timestampMs": 135000, "kind": "night_action_result", "actorIndex": null, "targetIndex": 0, "data": { "result_type": "investigation", "message": "Your investigation reveals that Skystar walks in shadow." }, "visibility": "private" },
+    { "eventId": 26, "phaseIndex": 1, "timestampMs": 270000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "reason": "all_actions_received" }, "visibility": "public" },
+
+    { "eventId": 27, "phaseIndex": 2, "timestampMs": 270500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "day_number": 1, "timer_seconds": 30 }, "visibility": "public" },
+    { "eventId": 28, "phaseIndex": 2, "timestampMs": 272000, "kind": "player_died", "actorIndex": null, "targetIndex": 1, "data": { "cause": "night_kill", "by_player_index": 5 }, "visibility": "public" },
+    { "eventId": 29, "phaseIndex": 2, "timestampMs": 273000, "kind": "player_died", "actorIndex": null, "targetIndex": 6, "data": { "cause": "night_kill", "by_player_index": 2 }, "visibility": "public" },
+    { "eventId": 30, "phaseIndex": 2, "timestampMs": 300000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 31, "phaseIndex": 3, "timestampMs": 300500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "day_number": 2, "timer_seconds": 240 }, "visibility": "public" },
+    { "eventId": 32, "phaseIndex": 3, "timestampMs": 302000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Silverstream and Nightlight are both dead. This is terrible.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 33, "phaseIndex": 3, "timestampMs": 304000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "We need to stay calm. Panic is what the Deceivers want.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 34, "phaseIndex": 3, "timestampMs": 306000, "kind": "chat_message", "actorIndex": 2, "targetIndex": null, "data": { "text": "I agree with Gallus. We should think carefully before voting.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 35, "phaseIndex": 3, "timestampMs": 310000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "I have information. I investigated someone last night and they are NOT Harmony. They walk in shadows.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 36, "phaseIndex": 3, "timestampMs": 312000, "kind": "chat_message", "actorIndex": 2, "targetIndex": null, "data": { "text": "Who? Name them. We need to act fast.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 37, "phaseIndex": 3, "timestampMs": 315000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "It's Skystar. My investigation was clear — Deceiver.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 38, "phaseIndex": 3, "timestampMs": 317000, "kind": "chat_message", "actorIndex": 2, "targetIndex": null, "data": { "text": "That's a lie! I'm Harmony! Moonbeam is the real Deceiver, trying to frame me!", "channel": "public" }, "visibility": "public" },
+    { "eventId": 39, "phaseIndex": 3, "timestampMs": 320000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "Moonbeam has been straightforward. I'm inclined to believe the investigation.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 40, "phaseIndex": 3, "timestampMs": 323000, "kind": "chat_message", "actorIndex": 3, "targetIndex": null, "data": { "text": "I don't know either way. But two deaths last night is concerning.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 41, "phaseIndex": 3, "timestampMs": 326000, "kind": "chat_message", "actorIndex": 7, "targetIndex": null, "data": { "text": "Let's vote on Skystar. If Moonbeam is wrong, we deal with Moonbeam tomorrow.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 42, "phaseIndex": 3, "timestampMs": 330000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "I support voting on Skystar. The investigation is our best lead.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 43, "phaseIndex": 3, "timestampMs": 340000, "kind": "chat_message", "actorIndex": 2, "targetIndex": null, "data": { "text": "You're all making a mistake. Gallus is backing this way too eagerly — maybe they're teammates?", "channel": "public" }, "visibility": "public" },
+    { "eventId": 44, "phaseIndex": 3, "timestampMs": 350000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Classic deflection. Vote Skystar.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 45, "phaseIndex": 3, "timestampMs": 540000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 46, "phaseIndex": 4, "timestampMs": 540500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Voting", "day_number": 2, "timer_seconds": 120 }, "visibility": "public" },
+    { "eventId": 47, "phaseIndex": 4, "timestampMs": 542000, "kind": "nomination_started", "actorIndex": 0, "targetIndex": 2, "data": {}, "visibility": "public" },
+    { "eventId": 48, "phaseIndex": 4, "timestampMs": 544000, "kind": "vote_cast", "actorIndex": 0, "targetIndex": 2, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 49, "phaseIndex": 4, "timestampMs": 546000, "kind": "vote_cast", "actorIndex": 4, "targetIndex": 2, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 50, "phaseIndex": 4, "timestampMs": 548000, "kind": "vote_cast", "actorIndex": 3, "targetIndex": 2, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 51, "phaseIndex": 4, "timestampMs": 550000, "kind": "vote_cast", "actorIndex": 7, "targetIndex": 2, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 52, "phaseIndex": 4, "timestampMs": 552000, "kind": "vote_cast", "actorIndex": 5, "targetIndex": 2, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 53, "phaseIndex": 4, "timestampMs": 554000, "kind": "vote_updated", "actorIndex": null, "targetIndex": null, "data": { "nominee": 2, "yea_count": 5, "nay_count": 1, "voters": [0, 3, 4, 5, 7] }, "visibility": "public" },
+    { "eventId": 54, "phaseIndex": 4, "timestampMs": 660000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Voting", "reason": "vote_complete" }, "visibility": "public" },
+
+    { "eventId": 55, "phaseIndex": 5, "timestampMs": 660500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "day_number": 2, "timer_seconds": 150 }, "visibility": "public" },
+    { "eventId": 56, "phaseIndex": 5, "timestampMs": 662000, "kind": "night_action_submitted", "actorIndex": 0, "targetIndex": 5, "data": { "ability_name": "Investigate Allegiance", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 57, "phaseIndex": 5, "timestampMs": 664000, "kind": "night_action_submitted", "actorIndex": 5, "targetIndex": 6, "data": { "ability_name": "Mimic", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 58, "phaseIndex": 5, "timestampMs": 666000, "kind": "night_action_submitted", "actorIndex": 4, "targetIndex": 0, "data": { "ability_name": "Guard", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 59, "phaseIndex": 5, "timestampMs": 668000, "kind": "night_action_submitted", "actorIndex": 3, "targetIndex": 5, "data": { "ability_name": "Gamble", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 60, "phaseIndex": 5, "timestampMs": 670000, "kind": "night_action_submitted", "actorIndex": 7, "targetIndex": 4, "data": { "ability_name": "Advocate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 61, "phaseIndex": 5, "timestampMs": 672000, "kind": "night_action_result", "actorIndex": null, "targetIndex": 0, "data": { "result_type": "investigation", "message": "Your investigation reveals that Gallus walks in shadows." }, "visibility": "private" },
+    { "eventId": 62, "phaseIndex": 5, "timestampMs": 675000, "kind": "faction_kill_claimed", "actorIndex": 5, "targetIndex": 6, "data": { "ability_name": "Assassinate" }, "visibility": "faction" },
+    { "eventId": 63, "phaseIndex": 5, "timestampMs": 810000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "reason": "all_actions_received" }, "visibility": "public" },
+
+    { "eventId": 64, "phaseIndex": 6, "timestampMs": 810500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "day_number": 2, "timer_seconds": 30 }, "visibility": "public" },
+    { "eventId": 65, "phaseIndex": 6, "timestampMs": 812000, "kind": "player_died", "actorIndex": null, "targetIndex": 6, "data": { "cause": "night_kill", "by_player_index": 5 }, "visibility": "public" },
+    { "eventId": 66, "phaseIndex": 6, "timestampMs": 840000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 67, "phaseIndex": 7, "timestampMs": 840500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "day_number": 3, "timer_seconds": 240 }, "visibility": "public" },
+    { "eventId": 68, "phaseIndex": 7, "timestampMs": 842000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Nightlight is dead again. The Deceivers are picking us off.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 69, "phaseIndex": 7, "timestampMs": 844000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "Wait, Nightlight was already dead from Night 1. Let me re-check.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 70, "phaseIndex": 7, "timestampMs": 846000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Right, sorry. I investigated Gallus last night — Deceiver. He's the second one.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 71, "phaseIndex": 7, "timestampMs": 848000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "That's convenient, Moonbeam. You've now accused both players who disagreed with you. Maybe YOU'RE the Deceiver feeding us false info?", "channel": "public" }, "visibility": "public" },
+    { "eventId": 72, "phaseIndex": 7, "timestampMs": 850000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "Moonbeam's first investigation was correct — Skystar was a Deceiver. I trust the second one too.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 73, "phaseIndex": 7, "timestampMs": 852000, "kind": "chat_message", "actorIndex": 3, "targetIndex": null, "data": { "text": "I'm Neutral, by the way. Gambler. I have my own win condition but I'm not against Harmony.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 74, "phaseIndex": 7, "timestampMs": 854000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "Smolder claiming Neutral this early is suspicious. Maybe we should look at them instead.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 75, "phaseIndex": 7, "timestampMs": 856000, "kind": "chat_message", "actorIndex": 7, "targetIndex": null, "data": { "text": "I'm the Advocate. I chose to protect Smolder last night. They're telling the truth about being Neutral.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 76, "phaseIndex": 7, "timestampMs": 858000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "Sunburst, you're just enabling Smolder's claim. This feels coordinated.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 77, "phaseIndex": 7, "timestampMs": 860000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Gallus is deflecting hard. Two investigations, both correct. Vote Gallus.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 78, "phaseIndex": 7, "timestampMs": 862000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "I'll back that. Vote Gallus.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 79, "phaseIndex": 7, "timestampMs": 864000, "kind": "chat_message", "actorIndex": 5, "targetIndex": null, "data": { "text": "You're making a huge mistake. Moonbeam is playing all of you.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 80, "phaseIndex": 7, "timestampMs": 866000, "kind": "chat_message", "actorIndex": 3, "targetIndex": null, "data": { "text": "I'm voting Gallus too. The evidence adds up.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 81, "phaseIndex": 7, "timestampMs": 868000, "kind": "chat_message", "actorIndex": 7, "targetIndex": null, "data": { "text": "If Gallus is Deceiver, game might be over. Harmony majority.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 82, "phaseIndex": 7, "timestampMs": 1080000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 83, "phaseIndex": 8, "timestampMs": 1080500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Voting", "day_number": 3, "timer_seconds": 120 }, "visibility": "public" },
+    { "eventId": 84, "phaseIndex": 8, "timestampMs": 1082000, "kind": "nomination_started", "actorIndex": 0, "targetIndex": 5, "data": {}, "visibility": "public" },
+    { "eventId": 85, "phaseIndex": 8, "timestampMs": 1084000, "kind": "vote_cast", "actorIndex": 0, "targetIndex": 5, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 86, "phaseIndex": 8, "timestampMs": 1086000, "kind": "vote_cast", "actorIndex": 4, "targetIndex": 5, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 87, "phaseIndex": 8, "timestampMs": 1088000, "kind": "vote_cast", "actorIndex": 3, "targetIndex": 5, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 88, "phaseIndex": 8, "timestampMs": 1090000, "kind": "vote_cast", "actorIndex": 7, "targetIndex": 5, "data": { "is_ghost": false }, "visibility": "public" },
+    { "eventId": 89, "phaseIndex": 8, "timestampMs": 1092000, "kind": "vote_cast", "actorIndex": 1, "targetIndex": 5, "data": { "is_ghost": true }, "visibility": "public" },
+    { "eventId": 90, "phaseIndex": 8, "timestampMs": 1094000, "kind": "ghost_vote_cast", "actorIndex": 1, "targetIndex": 5, "data": {}, "visibility": "public" },
+    { "eventId": 91, "phaseIndex": 8, "timestampMs": 1096000, "kind": "vote_updated", "actorIndex": null, "targetIndex": null, "data": { "nominee": 5, "yea_count": 5, "nay_count": 0, "voters": [0, 1, 3, 4, 7] }, "visibility": "public" },
+    { "eventId": 92, "phaseIndex": 8, "timestampMs": 1200000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Voting", "reason": "vote_complete" }, "visibility": "public" },
+
+    { "eventId": 93, "phaseIndex": 9, "timestampMs": 1200500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "day_number": 3, "timer_seconds": 120 }, "visibility": "public" },
+    { "eventId": 94, "phaseIndex": 9, "timestampMs": 1202000, "kind": "night_action_submitted", "actorIndex": 0, "targetIndex": 3, "data": { "ability_name": "Investigate Allegiance", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 95, "phaseIndex": 9, "timestampMs": 1204000, "kind": "night_action_submitted", "actorIndex": 4, "targetIndex": 0, "data": { "ability_name": "Guard", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 96, "phaseIndex": 9, "timestampMs": 1206000, "kind": "night_action_submitted", "actorIndex": 3, "targetIndex": 7, "data": { "ability_name": "Gamble", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 97, "phaseIndex": 9, "timestampMs": 1208000, "kind": "night_action_submitted", "actorIndex": 7, "targetIndex": 3, "data": { "ability_name": "Advocate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 98, "phaseIndex": 9, "timestampMs": 1320000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "reason": "all_actions_received" }, "visibility": "public" },
+
+    { "eventId": 99, "phaseIndex": 10, "timestampMs": 1320500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "day_number": 3, "timer_seconds": 30 }, "visibility": "public" },
+    { "eventId": 100, "phaseIndex": 10, "timestampMs": 1322000, "kind": "night_action_result", "actorIndex": null, "targetIndex": 0, "data": { "result_type": "investigation", "message": "Your investigation reveals that Smolder walks in neutral ground." }, "visibility": "private" },
+    { "eventId": 101, "phaseIndex": 10, "timestampMs": 1350000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 102, "phaseIndex": 11, "timestampMs": 1350500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "day_number": 4, "timer_seconds": 210 }, "visibility": "public" },
+    { "eventId": 103, "phaseIndex": 11, "timestampMs": 1352000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "No deaths last night! Ocellus, your guard is working.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 104, "phaseIndex": 11, "timestampMs": 1354000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "Or the Deceivers are all dead. Gallus was the last one, right?", "channel": "public" }, "visibility": "public" },
+    { "eventId": 105, "phaseIndex": 11, "timestampMs": 1356000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "I investigated Smolder — they're Neutral, as claimed. No more Deceivers left.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 106, "phaseIndex": 11, "timestampMs": 1358000, "kind": "chat_message", "actorIndex": 3, "targetIndex": null, "data": { "text": "So Harmony wins? We did it!", "channel": "public" }, "visibility": "public" },
+    { "eventId": 107, "phaseIndex": 11, "timestampMs": 1360000, "kind": "chat_message", "actorIndex": 7, "targetIndex": null, "data": { "text": "Great game everyone! That was intense.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 108, "phaseIndex": 11, "timestampMs": 1362000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "GG! Moonbeam out 🌙", "channel": "public" }, "visibility": "public" },
+    { "eventId": 109, "phaseIndex": 11, "timestampMs": 1560000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 110, "phaseIndex": 12, "timestampMs": 1560500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "day_number": 4, "timer_seconds": 120 }, "visibility": "public" },
+    { "eventId": 111, "phaseIndex": 12, "timestampMs": 1562000, "kind": "night_action_submitted", "actorIndex": 0, "targetIndex": 4, "data": { "ability_name": "Investigate Allegiance", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 112, "phaseIndex": 12, "timestampMs": 1564000, "kind": "night_action_submitted", "actorIndex": 4, "targetIndex": 3, "data": { "ability_name": "Guard", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 113, "phaseIndex": 12, "timestampMs": 1566000, "kind": "night_action_submitted", "actorIndex": 3, "targetIndex": 0, "data": { "ability_name": "Gamble", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 114, "phaseIndex": 12, "timestampMs": 1568000, "kind": "night_action_submitted", "actorIndex": 7, "targetIndex": 0, "data": { "ability_name": "Advocate", "secondary_target_index": null }, "visibility": "admin_only" },
+    { "eventId": 115, "phaseIndex": 12, "timestampMs": 1680000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightAction", "reason": "all_actions_received" }, "visibility": "public" },
+
+    { "eventId": 116, "phaseIndex": 13, "timestampMs": 1680500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "day_number": 4, "timer_seconds": 30 }, "visibility": "public" },
+    { "eventId": 117, "phaseIndex": 13, "timestampMs": 1682000, "kind": "night_action_result", "actorIndex": null, "targetIndex": 0, "data": { "result_type": "investigation", "message": "Your investigation reveals that Ocellus walks in harmony." }, "visibility": "private" },
+    { "eventId": 118, "phaseIndex": 13, "timestampMs": 1710000, "kind": "phase_end", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "NightResolution", "reason": "timer" }, "visibility": "public" },
+
+    { "eventId": 119, "phaseIndex": 14, "timestampMs": 1710500, "kind": "phase_start", "actorIndex": null, "targetIndex": null, "data": { "phase_type": "Day", "day_number": 5, "timer_seconds": 390 }, "visibility": "public" },
+    { "eventId": 120, "phaseIndex": 14, "timestampMs": 1712000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Ocellus is confirmed Harmony. We're all clear.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 121, "phaseIndex": 14, "timestampMs": 1714000, "kind": "chat_message", "actorIndex": 3, "targetIndex": null, "data": { "text": "Harmony majority confirmed. The village is safe.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 122, "phaseIndex": 14, "timestampMs": 1716000, "kind": "chat_message", "actorIndex": 4, "targetIndex": null, "data": { "text": "GG everyone! That was a great game.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 123, "phaseIndex": 14, "timestampMs": 1718000, "kind": "chat_message", "actorIndex": 7, "targetIndex": null, "data": { "text": "Well played! Moonbeam's investigations carried this game.", "channel": "public" }, "visibility": "public" },
+    { "eventId": 124, "phaseIndex": 14, "timestampMs": 1720000, "kind": "chat_message", "actorIndex": 0, "targetIndex": null, "data": { "text": "Couldn't have done it without Ocellus guarding me. Team effort! 🌸", "channel": "public" }, "visibility": "public" },
+    { "eventId": 125, "phaseIndex": 14, "timestampMs": 2100000, "kind": "game_over", "actorIndex": null, "targetIndex": null, "data": { "winner": "Harmony", "win_condition": "Harmony majority reached (all Deceivers eliminated)", "final_player_count": 5 }, "visibility": "public" }
+  ],
+  "snapshots": [
+    {
+      "phaseIndex": 0, "timestampMs": 0,
+      "state": {
+        "currentDay": 1, "phase": "Day", "timerSecondsRemaining": 120,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": true, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": true, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": true, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": true, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null, "nightActions": null, "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 1, "timestampMs": 120500,
+      "state": {
+        "currentDay": 1, "phase": "NightAction", "timerSecondsRemaining": 90,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": true, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": true, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": true, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": true, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null,
+        "nightActions": { "receivedFrom": [], "pendingFrom": [0, 1, 2, 3, 4, 5, 6, 7], "totalRequired": 8 },
+        "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 3, "timestampMs": 300500,
+      "state": {
+        "currentDay": 2, "phase": "Day", "timerSecondsRemaining": 240,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": true, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": true, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null, "nightActions": null, "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 5, "timestampMs": 660500,
+      "state": {
+        "currentDay": 2, "phase": "NightAction", "timerSecondsRemaining": 150,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": false, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": true, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null,
+        "nightActions": { "receivedFrom": [], "pendingFrom": [0, 3, 4, 5, 7], "totalRequired": 5 },
+        "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 7, "timestampMs": 840500,
+      "state": {
+        "currentDay": 3, "phase": "Day", "timerSecondsRemaining": 240,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": false, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": true, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null, "nightActions": null, "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 9, "timestampMs": 1200500,
+      "state": {
+        "currentDay": 3, "phase": "NightAction", "timerSecondsRemaining": 120,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": false, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": false, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null,
+        "nightActions": { "receivedFrom": [], "pendingFrom": [0, 3, 4, 7], "totalRequired": 4 },
+        "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 11, "timestampMs": 1350500,
+      "state": {
+        "currentDay": 4, "phase": "Day", "timerSecondsRemaining": 210,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": false, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": false, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null, "nightActions": null, "allNightActionsReceived": false
+      }
+    },
+    {
+      "phaseIndex": 14, "timestampMs": 1710500,
+      "state": {
+        "currentDay": 5, "phase": "Day", "timerSecondsRemaining": 390,
+        "players": [
+          { "playerIndex": 0, "displayName": "Moonbeam", "isAlive": true, "isHost": true },
+          { "playerIndex": 1, "displayName": "Silverstream", "isAlive": false, "isHost": false },
+          { "playerIndex": 2, "displayName": "Skystar", "isAlive": false, "isHost": false },
+          { "playerIndex": 3, "displayName": "Smolder", "isAlive": true, "isHost": false },
+          { "playerIndex": 4, "displayName": "Ocellus", "isAlive": true, "isHost": false },
+          { "playerIndex": 5, "displayName": "Gallus", "isAlive": false, "isHost": false },
+          { "playerIndex": 6, "displayName": "Nightlight", "isAlive": false, "isHost": false },
+          { "playerIndex": 7, "displayName": "Sunburst", "isAlive": true, "isHost": false }
+        ],
+        "activeVote": null, "nightActions": null, "allNightActionsReceived": false
+      }
+    }
+  ]
+}
