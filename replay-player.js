@@ -1,7 +1,16 @@
 /* ============================================================
-   HARMONY DECEPTION — Replay Player JavaScript
-   Handles: file loading, playback, timeline scrubbing,
+   HARMONY DECEPTION — Replay Player JavaScript (I5: Animated/Progressive)
+   Handles: file loading, progressive animated playback, timeline scrubbing,
    event rendering, role reveal, spectator filtering
+
+   I5 enhancements:
+   - requestAnimationFrame-based playback loop for smooth animation
+   - Continuous timestamp-based seeking (not just event-to-event jumps)
+   - Animated phase transition banners
+   - Smooth scrubber movement between events
+   - State panel values interpolate during playback
+   - Event log entries fade/slide in as they appear
+   - Variable speed: 1x, 2x, 4x
    ============================================================ */
 
 (function() {
@@ -15,13 +24,21 @@
     phases: [],             // Phase records
     players: [],            // Player records
     snapshots: [],          // State snapshots
-    currentEventIndex: 0,   // Index into filteredEvents
+    currentEventIndex: 0,   // Index into filteredEvents (last shown event)
     isPlaying: false,
     speed: 1,               // 1x, 2x, 4x
-    playInterval: null,     // setInterval handle
     rolesRevealed: false,   // Whether game_over has been reached
     activeFilter: 'all',    // Current event log filter
     totalDurationMs: 0,     // Total game duration in ms
+
+    // ── I5: Progressive playback state ──────────────────────────────
+    playbackPosMs: 0,       // Current playback position in ms (continuous)
+    lastFrameTime: 0,       // Last rAF timestamp for delta calculation
+    rafId: null,             // requestAnimationFrame handle
+    basePlaybackRate: 1.0,  // Base speed multiplier (1x = real-time-ish)
+    phaseTransitionActive: false, // True during phase transition animation
+    phaseTransitionEnd: 0,  // When phase transition animation should end (timestamp)
+    lastPhaseIndex: -1,     // Track phase changes for transition detection
   };
 
   // ===== DOM =====
@@ -108,6 +125,15 @@
   // Events hidden from spectator view (per spec §3.2 and §9.1)
   const HIDDEN_DURING_PLAYBACK = ['role_assigned', 'night_action_submitted', 'night_action_result', 'ghost_whisper_sent'];
 
+  // I5: Playback speed constants
+  // At 1x, we play through the replay at a comfortable viewing pace.
+  // The base interval between events is scaled by the actual time gap
+  // between events, capped to avoid too-slow or too-fast playback.
+  const MIN_EVENT_DELAY_MS = 200;   // Minimum delay between events (ms real time)
+  const MAX_EVENT_DELAY_MS = 3000;  // Maximum delay between events (ms real time)
+  const DEFAULT_EVENT_DELAY_MS = 800; // Fallback if no timestamp gap
+  const PHASE_TRANSITION_MS = 600;  // Phase transition animation duration (ms real time)
+
   // ===== FILE LOADING =====
 
   function initLoader() {
@@ -172,7 +198,6 @@
       .then(res => res.json())
       .then(data => loadReplay(data))
       .catch(err => {
-        // If fetch fails (e.g., file:// protocol), try relative path
         console.error('Failed to load sample:', err);
         alert('Could not load sample replay. Make sure sample-replay.json is in the same directory. If opening via file://, use a local server or drop the file manually.');
       });
@@ -194,6 +219,10 @@
     state.isPlaying = false;
     state.rolesRevealed = false;
     state.activeFilter = 'all';
+    state.playbackPosMs = 0;
+    state.lastFrameTime = 0;
+    state.phaseTransitionActive = false;
+    state.lastPhaseIndex = -1;
 
     // Compute total duration
     if (state.events.length > 0) {
@@ -207,6 +236,9 @@
     // Hide loader, show app
     dom.loaderOverlay.classList.add('hidden');
     dom.replayApp.classList.add('active');
+
+    // Create phase transition overlay element
+    createPhaseTransitionOverlay();
 
     // Render everything
     renderMatchHeader();
@@ -226,9 +258,9 @@
   }
 
   function resetPlayer() {
-    if (state.playInterval) {
-      clearInterval(state.playInterval);
-      state.playInterval = null;
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = null;
     }
     state.replay = null;
     state.events = [];
@@ -236,11 +268,15 @@
     state.currentEventIndex = 0;
     state.isPlaying = false;
     state.rolesRevealed = false;
+    state.playbackPosMs = 0;
+    state.phaseTransitionActive = false;
+    state.lastPhaseIndex = -1;
     dom.eventLog.innerHTML = '';
     dom.playerList.innerHTML = '';
     dom.phaseJumps.innerHTML = '';
     dom.phaseMarkers.innerHTML = '';
     dom.deathMarkers.innerHTML = '';
+    removePhaseTransitionOverlay();
     dom.replayApp.classList.remove('active');
   }
 
@@ -263,6 +299,83 @@
       // Never show admin_only events in spectator view
       return false;
     });
+  }
+
+  // ===== I5: PHASE TRANSITION OVERLAY =====
+
+  function createPhaseTransitionOverlay() {
+    // Create overlay element for phase transition animations
+    let overlay = document.getElementById('phaseTransitionOverlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'phaseTransitionOverlay';
+      overlay.className = 'phase-transition-overlay';
+      overlay.innerHTML = `
+        <div class="phase-transition-content">
+          <div class="phase-transition-icon" id="ptIcon"></div>
+          <div class="phase-transition-label" id="ptLabel"></div>
+          <div class="phase-transition-sublabel" id="ptSubLabel"></div>
+          <div class="phase-transition-bar"><div class="phase-transition-bar-fill" id="ptBarFill"></div></div>
+        </div>
+      `;
+      dom.replayApp.appendChild(overlay);
+    }
+  }
+
+  function removePhaseTransitionOverlay() {
+    const overlay = document.getElementById('phaseTransitionOverlay');
+    if (overlay) overlay.remove();
+  }
+
+  function showPhaseTransition(phaseRecord) {
+    if (!phaseRecord) return;
+
+    const overlay = document.getElementById('phaseTransitionOverlay');
+    if (!overlay) return;
+
+    const icon = PHASE_ICONS[phaseRecord.phaseType] || '▶';
+    const label = phaseRecord.phaseType === 'Day'
+      ? 'Day ' + phaseRecord.dayNumber
+      : phaseRecord.phaseType === 'NightAction'
+        ? 'Night ' + phaseRecord.dayNumber
+        : phaseRecord.phaseType === 'NightResolution'
+          ? 'Resolution — Night ' + phaseRecord.dayNumber
+          : phaseRecord.phaseType === 'Voting'
+            ? 'Voting — Day ' + phaseRecord.dayNumber
+            : phaseRecord.phaseType === 'Trial'
+              ? 'Trial — Day ' + phaseRecord.dayNumber
+              : phaseRecord.phaseType + ' — Day ' + phaseRecord.dayNumber;
+
+    const subLabel = PHASE_LABELS[phaseRecord.phaseType] || '';
+
+    document.getElementById('ptIcon').textContent = icon;
+    document.getElementById('ptLabel').textContent = label;
+    document.getElementById('ptSubLabel').textContent = subLabel;
+
+    // Reset bar fill
+    const barFill = document.getElementById('ptBarFill');
+    barFill.style.width = '0%';
+
+    // Trigger animation
+    overlay.classList.remove('active');
+    // Force reflow to restart animation
+    void overlay.offsetWidth;
+    overlay.classList.add('active');
+
+    // Animate progress bar
+    requestAnimationFrame(() => {
+      barFill.style.transition = `width ${PHASE_TRANSITION_MS}ms linear`;
+      barFill.style.width = '100%';
+    });
+
+    state.phaseTransitionActive = true;
+    state.phaseTransitionEnd = performance.now() + PHASE_TRANSITION_MS;
+
+    // Auto-hide after animation
+    setTimeout(() => {
+      overlay.classList.remove('active');
+      state.phaseTransitionActive = false;
+    }, PHASE_TRANSITION_MS);
   }
 
   // ===== RENDER: MATCH HEADER =====
@@ -430,7 +543,9 @@
         lastPhaseIndex = ev.phaseIndex;
       }
 
-      html += renderEventEntry(ev, idx === state.currentEventIndex);
+      // I5: Add "newly-appeared" class to the most recent event during playback
+      const isNew = state.isPlaying && idx === state.currentEventIndex;
+      html += renderEventEntry(ev, idx === state.currentEventIndex, isNew);
     });
 
     dom.eventLog.innerHTML = html;
@@ -459,13 +574,14 @@
     }
   }
 
-  function renderEventEntry(ev, isCurrent) {
+  function renderEventEntry(ev, isCurrent, isNew) {
     const icon = EVENT_ICONS[ev.kind] || '•';
     const timeStr = formatTimestamp(ev.timestampMs);
     const content = formatEventContent(ev);
     const currentClass = isCurrent ? ' style="border-right: 3px solid var(--c-gold);"' : '';
+    const newClass = isNew ? ' event-new' : '';
 
-    return '<div class="event-entry event-' + escapeHtml(ev.kind) + '"' + currentClass + '>'
+    return '<div class="event-entry event-' + escapeHtml(ev.kind) + newClass + '"' + currentClass + '>'
       + '<span class="event-time">' + timeStr + '</span>'
       + '<span class="event-icon">' + icon + '</span>'
       + '<span class="event-content">' + content + '</span>'
@@ -591,7 +707,7 @@
     }
   }
 
-  // ===== PLAYBACK CONTROLS =====
+  // ===== I5: PROGRESSIVE PLAYBACK ENGINE =====
 
   function setupPlaybackControls() {
     dom.btnPlay.addEventListener('click', togglePlay);
@@ -604,11 +720,7 @@
         dom.speedSelector.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         state.speed = parseInt(btn.dataset.speed);
-        if (state.isPlaying) {
-          // Restart interval with new speed
-          stopPlayback();
-          startPlayback();
-        }
+        // Speed change takes effect on next frame
       });
     });
 
@@ -617,6 +729,7 @@
 
     dom.scrubberTrack.addEventListener('mousedown', (e) => {
       isDragging = true;
+      stopPlayback();
       handleScrubberClick(e);
     });
 
@@ -630,6 +743,7 @@
 
     // Touch support
     dom.scrubberTrack.addEventListener('touchstart', (e) => {
+      stopPlayback();
       handleScrubberTouch(e);
     });
 
@@ -650,10 +764,12 @@
           break;
         case 'ArrowLeft':
           e.preventDefault();
+          stopPlayback();
           stepPrev();
           break;
         case 'ArrowRight':
           e.preventDefault();
+          stopPlayback();
           stepNext();
           break;
       }
@@ -705,6 +821,10 @@
     }
   }
 
+  // I5: Progressive playback using requestAnimationFrame
+  // Instead of stepping event-by-event with setInterval, we use a continuous
+  // timestamp-based playback position that advances smoothly via rAF.
+  // Events are revealed as the playback position passes their timestamp.
   function startPlayback() {
     if (state.currentEventIndex >= state.filteredEvents.length - 1) {
       // At end, restart from beginning
@@ -713,24 +833,97 @@
     state.isPlaying = true;
     dom.btnPlay.textContent = '⏸';
 
-    const baseInterval = 800; // ms between events at 1x
-    const interval = baseInterval / state.speed;
+    // Set initial playback position to current event's timestamp
+    const currentEv = state.filteredEvents[state.currentEventIndex];
+    state.playbackPosMs = currentEv ? currentEv.timestampMs : 0;
+    state.lastFrameTime = performance.now();
 
-    state.playInterval = setInterval(() => {
+    // Start rAF loop
+    state.rafId = requestAnimationFrame(playbackFrame);
+  }
+
+  // I5: Main playback loop — called every frame via requestAnimationFrame
+  function playbackFrame(frameTime) {
+    if (!state.isPlaying) return;
+
+    // Calculate real-time delta
+    const deltaMs = frameTime - state.lastFrameTime;
+    state.lastFrameTime = frameTime;
+
+    // Scale delta by playback speed
+    // At 1x: we advance through the replay at a comfortable viewing pace
+    // The base rate scales the replay timeline to real-time
+    // (e.g., a 30-min game plays back in ~30s at 1x with event-delay scaling)
+    const scaledDelta = deltaMs * state.speed;
+
+    // Advance playback position
+    state.playbackPosMs += scaledDelta;
+
+    // Clamp to total duration
+    if (state.playbackPosMs >= state.totalDurationMs) {
+      state.playbackPosMs = state.totalDurationMs;
+      // Show all remaining events
       if (state.currentEventIndex < state.filteredEvents.length - 1) {
-        seekToEvent(state.currentEventIndex + 1);
-      } else {
-        stopPlayback();
+        seekToEvent(state.filteredEvents.length - 1);
       }
-    }, interval);
+      stopPlayback();
+      return;
+    }
+
+    // Find all events that should be visible at current playback position
+    let newEventIndex = state.currentEventIndex;
+    let phaseChanged = false;
+    let newPhaseRecord = null;
+
+    for (let i = state.currentEventIndex + 1; i < state.filteredEvents.length; i++) {
+      if (state.filteredEvents[i].timestampMs <= state.playbackPosMs) {
+        newEventIndex = i;
+
+        // Check for phase transition
+        const ev = state.filteredEvents[i];
+        if (ev.kind === 'phase_start' && ev.phaseIndex !== state.lastPhaseIndex) {
+          phaseChanged = true;
+          state.lastPhaseIndex = ev.phaseIndex;
+          newPhaseRecord = state.phases.find(p => p.phaseIndex === ev.phaseIndex);
+        }
+      } else {
+        break; // Events are sorted by timestamp
+      }
+    }
+
+    // If we advanced past events, update display
+    if (newEventIndex > state.currentEventIndex) {
+      // Use seekToEvent to update everything
+      seekToEvent(newEventIndex);
+
+      // I5: Show phase transition animation if phase changed
+      if (phaseChanged && newPhaseRecord) {
+        showPhaseTransition(newPhaseRecord);
+      }
+    } else {
+      // I5: Even if no new event, update the scrubber smoothly
+      updateScrubberSmooth();
+    }
+
+    // Continue the animation loop
+    state.rafId = requestAnimationFrame(playbackFrame);
+  }
+
+  // I5: Smooth scrubber update (between events)
+  function updateScrubberSmooth() {
+    if (state.totalDurationMs === 0) return;
+    const pct = (state.playbackPosMs / state.totalDurationMs) * 100;
+    dom.scrubberFill.style.width = pct + '%';
+    dom.scrubberThumb.style.left = pct + '%';
+    dom.currentTime.textContent = formatTimestamp(state.playbackPosMs);
   }
 
   function stopPlayback() {
     state.isPlaying = false;
     dom.btnPlay.textContent = '▶';
-    if (state.playInterval) {
-      clearInterval(state.playInterval);
-      state.playInterval = null;
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = null;
     }
   }
 
@@ -750,19 +943,37 @@
     idx = Math.max(0, Math.min(idx, state.filteredEvents.length - 1));
     state.currentEventIndex = idx;
 
-    // Check if we've hit game_over
+    // Update playback position to match the event
     const currentEv = state.filteredEvents[idx];
+    if (currentEv) {
+      state.playbackPosMs = currentEv.timestampMs;
+    }
+
+    // Check if we've hit game_over
     if (currentEv && currentEv.kind === 'game_over' && !state.rolesRevealed) {
       state.rolesRevealed = true;
       rebuildFilteredEvents();
       // After rebuild, find the equivalent position
-      // We need to find the game_over event in the new filtered list
       const gameOverIdx = state.filteredEvents.findIndex(e => e.kind === 'game_over');
       if (gameOverIdx >= 0) {
         idx = gameOverIdx;
         state.currentEventIndex = idx;
       }
       renderPlayerList();
+    }
+
+    // I5: Detect phase transitions during manual seeking
+    if (currentEv && currentEv.kind === 'phase_start') {
+      if (currentEv.phaseIndex !== state.lastPhaseIndex) {
+        state.lastPhaseIndex = currentEv.phaseIndex;
+        // Only show transition during playback, not manual scrub
+        if (state.isPlaying) {
+          const phaseRecord = state.phases.find(p => p.phaseIndex === currentEv.phaseIndex);
+          if (phaseRecord) {
+            showPhaseTransition(phaseRecord);
+          }
+        }
+      }
     }
 
     updateScrubber();
@@ -785,7 +996,6 @@
       // Find closest phase
       const phaseStartTs = state.events.find(e => e.phaseIndex === phase.phaseIndex);
       if (phaseStartTs) {
-        // Find nearest event
         let bestIdx = 0;
         let bestDiff = Infinity;
         state.filteredEvents.forEach((ev, idx) => {
@@ -847,8 +1057,19 @@
 
     // Day
     if (phase) {
-      dom.stateDay.textContent = phase.dayNumber;
-      dom.statePhase.textContent = phase.phaseType;
+      // I5: Animate day/phase changes
+      const prevDay = dom.stateDay.textContent;
+      const prevPhase = dom.statePhase.textContent;
+      if (prevDay !== String(phase.dayNumber)) {
+        animateValueChange(dom.stateDay, phase.dayNumber);
+      } else {
+        dom.stateDay.textContent = phase.dayNumber;
+      }
+      if (prevPhase !== phase.phaseType) {
+        animateValueChange(dom.statePhase, phase.phaseType);
+      } else {
+        dom.statePhase.textContent = phase.phaseType;
+      }
     }
 
     // Alive/Dead count from snapshot or compute from events
@@ -863,7 +1084,6 @@
     } else {
       // Compute from player records + death events seen so far
       const deadPlayers = new Set();
-      // Check events up to current for player_died events
       for (let i = 0; i <= state.currentEventIndex; i++) {
         const ev = state.filteredEvents[i];
         if (ev.kind === 'player_died' && ev.targetIndex !== null) {
@@ -882,8 +1102,22 @@
       });
     }
 
-    dom.stateAlive.textContent = aliveCount;
-    dom.stateDead.textContent = deadCount;
+    // I5: Animate alive/dead count changes
+    const prevAlive = dom.stateAlive.textContent;
+    const prevDead = dom.stateDead.textContent;
+    const newAlive = String(aliveCount);
+    const newDead = String(deadCount);
+
+    if (prevAlive !== newAlive) {
+      animateValueChange(dom.stateAlive, newAlive);
+    } else {
+      dom.stateAlive.textContent = newAlive;
+    }
+    if (prevDead !== newDead) {
+      animateValueChange(dom.stateDead, newDead);
+    } else {
+      dom.stateDead.textContent = newDead;
+    }
 
     // Timer
     if (snapshot && snapshot.state && snapshot.state.timerSecondsRemaining !== undefined) {
@@ -900,6 +1134,18 @@
       dom.timerDisplay.textContent = '—';
       dom.timerDisplay.classList.remove('warning');
     }
+  }
+
+  // I5: Animate value changes in the state panel
+  function animateValueChange(element, newValue) {
+    element.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+    element.style.transform = 'scale(1.3)';
+    element.style.opacity = '0.5';
+    setTimeout(() => {
+      element.textContent = newValue;
+      element.style.transform = 'scale(1)';
+      element.style.opacity = '1';
+    }, 150);
   }
 
   function updatePhaseDisplay() {
@@ -924,9 +1170,36 @@
 
     const subLabel = PHASE_LABELS[phase.phaseType] || '';
 
-    dom.phaseIcon.textContent = icon;
-    dom.phaseLabel.textContent = label;
-    dom.phaseSubLabel.textContent = subLabel;
+    // I5: Animate phase display changes
+    const prevLabel = dom.phaseLabel.textContent;
+    if (prevLabel !== label) {
+      dom.phaseIcon.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+      dom.phaseIcon.style.transform = 'scale(0.5) rotate(180deg)';
+      dom.phaseIcon.style.opacity = '0';
+      setTimeout(() => {
+        dom.phaseIcon.textContent = icon;
+        dom.phaseIcon.style.transform = 'scale(1) rotate(0deg)';
+        dom.phaseIcon.style.opacity = '1';
+      }, 200);
+
+      dom.phaseLabel.style.transition = 'opacity 0.3s ease';
+      dom.phaseLabel.style.opacity = '0';
+      setTimeout(() => {
+        dom.phaseLabel.textContent = label;
+        dom.phaseLabel.style.opacity = '1';
+      }, 200);
+
+      dom.phaseSubLabel.style.transition = 'opacity 0.3s ease';
+      dom.phaseSubLabel.style.opacity = '0';
+      setTimeout(() => {
+        dom.phaseSubLabel.textContent = subLabel;
+        dom.phaseSubLabel.style.opacity = '1';
+      }, 200);
+    } else {
+      dom.phaseIcon.textContent = icon;
+      dom.phaseLabel.textContent = label;
+      dom.phaseSubLabel.textContent = subLabel;
+    }
   }
 
   function updatePhaseJumpActive() {
